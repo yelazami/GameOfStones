@@ -1,0 +1,38 @@
+<% include header.ejs %>
+
+<% if(locals.err ){ %>
+<scpan class="alert alert-danger"> <%= locals.err %> </scpan>
+<br><br>
+<% } %>
+<table class="table">
+    <thead>
+    <td> <b>Image</b>  </td>
+        <td> <b>Nom</b>  </td>
+        <td> <b>Description</b> </td>
+        <td> <b> characteristic </b>  </td>
+    </thead>
+    <tbody>
+    <% if(locals.naios){ %>
+        <% locals.naios.forEach(function(naio){ %>
+        <tr>
+            <td>  <img src="/pic/<%= naio.image %>" alt="<%= naio.image %>"  style=" width: auto; height: 70px; " /> </td>
+            <td> <%= naio.nom %> </td>
+            <td> <%= naio.description %> </td>
+            <td>
+                <% if(naio.isChef == 1) { %>
+                    <span class="badge badge-danger"><%= naio.isChef==1? 'Chef': ''  %></span>
+                <% } %>
+                <% if(naio.isMosquotte == 1) { %>
+                    <span class="badge badge-warning"><%= naio.isMosquotte==1? 'Mosquotte': ''  %></span>
+                <% } %>
+                <% if(naio.isMosquotte ==0 && naio.isChef == 0){ %>
+                 <span class="badge badge-primary">Ordinaire </span>
+                <% } %>
+            </td>
+        </tr>
+    <% }); %>
+    <% } %>
+    </tbody>
+</table>
+
+<% include footer.ejs %>

@@ -1,0 +1,43 @@
+<% include header.ejs %>
+
+<div class="col-md-12">
+    <div class="col-md-7 offset-md-3">
+        <% if(locals.erreurInput ){ %>
+        <scpan class="alert alert-warning"> <%= locals.erreurInput %> </scpan>
+        <br><br>
+        <% } %>
+        <form action="/admin/addNewNaios" method="post" enctype="multipart/form-data">
+            <label for="nom" class="form-check-label">Nom :</label>
+            <input type="text" name="nom"  class=" form-control " id="nom"/>
+            <br>
+            <label for="lat" class="form-check-label">Position Latitude :</label>
+            <input type="number" name="lat"  class=" form-control " id="lat" step="any"/>
+            <br>
+            <label for="lon" class="form-check-label">Position Longitude :</label>
+            <input type="number" name="lon"  class=" form-control " id="lon" step="any"/>
+            <br>
+            <label for="desc" class="form-check-label">desc :</label>
+            <textArea class=" form-control" rows="4" cols="10" name="desc" id="desc"></textArea>
+            <br><br>
+
+            <input type="checkbox" name="isChef"  class=" " id="isChef" value="1"/>
+            <label for="isChef">Naios Chef</label>
+            <br>
+            <input type="checkbox" name="isMosquotte"  class=" " id="isMosquotte" value="1"/>
+            <label for="isMosquotte">Naios Mosquotte</label>
+            <br>
+            image:
+            <input type='file' id="imgInp" class="form-control" name="image"/>
+            <div class="col-md-6">
+                <img id="blah" src="#" alt="your image" style=" width: auto; height: 170px; margin: 10px ;" />
+            </div>
+
+            <br>
+            <input type="submit" class="btn btn-primary btn-outline-primary" value="Ajouter ...">
+
+        </form>
+    </div>
+</div>
+
+
+<% include footer.ejs %>

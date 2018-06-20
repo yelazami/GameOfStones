@@ -1,0 +1,45 @@
+<% include header %>
+
+        <% if(locals.err ){ %>
+        <scpan class="alert alert-danger"> <%= locals.err %> </scpan>
+        <br><br>
+        <% } %>
+        <div class="col-md-12">
+          <div class="col-md-10 offset-md-4">
+            <a href="/admin/generateAccessCode" class="btn btn-success"> Génerer un code d'accès et de contrôle  </a><br><br>
+            <% if(locals.code && locals.controle) { %>
+            <b class="codrops-icon codrops-icon-drop"> code d'accès:  <%= locals.code %> </b><br><br>
+              <b class="codrops-icon codrops-icon-drop"> code de contrôle :  <%= locals.controle %> </b> <br>
+            <% } %>
+          </div>
+
+            <div class="naiosSection offset-3" style="max-width:500px">
+                <% locals.naios.forEach(function (element) {   %>
+                <img class="mySlides" src="/pic/<%=element.image%>" style="width:100%">
+                 <!-- <scpan class="mySlides alert alert-success"> <%= //element.nom %> </scpan> -->
+              <%  }) %>
+
+            </div>
+
+        </div>
+
+
+<script type="text/javascript">
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 1500); // Change image every 2 seconds
+    }
+</script>
+<% include footer.ejs %>
+
+
